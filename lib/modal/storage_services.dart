@@ -3,7 +3,7 @@ import 'package:get_storage/get_storage.dart';
 class StorageService {
   final _box = GetStorage();
 
-  // Username Operations
+  // Username Operations ko
   String getUserName() {
     return _box.read('userName') ?? '';
   }
@@ -21,7 +21,7 @@ class StorageService {
     await _box.write('count', count);
   }
 
-  // Clear all stored data
+  // Clear all stored data function
   Future<void> clearAll() async {
     await _box.erase();
   }

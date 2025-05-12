@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/counter_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NameEntryView extends GetView<CounterController> {
   const NameEntryView({super.key});
@@ -14,27 +15,17 @@ class NameEntryView extends GetView<CounterController> {
     return Scaffold(
       body: Center(
         child: Container(
-          width: 320,
-          height: 600,
+
           decoration: BoxDecoration(
             color: Colors.grey[100],
-            borderRadius: BorderRadius.circular(20),
+
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Back Button
-              Align(
-                alignment: Alignment.topLeft,
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () => Get.back(),
-                ),
-              ),
-
-              // Name Input
+              // Name Input field
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
+                padding:  EdgeInsets.symmetric(horizontal: 32.w),
                 child: TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
@@ -48,7 +39,7 @@ class NameEntryView extends GetView<CounterController> {
 
 
               // Submit Button
-              const SizedBox(height: 16),
+               SizedBox(height: 16.h),
               Obx(() => ElevatedButton(
                 onPressed: controller.isNameInputValid
                     ? () {
@@ -57,9 +48,18 @@ class NameEntryView extends GetView<CounterController> {
                 }
                     : null,
                 style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(250, 50),
+
+                  minimumSize:  Size(290.w, 40.h),
+                  backgroundColor: controller.isNameInputValid ? Colors.black : Colors.grey,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
                 ),
-                child: const Text('Submit'),
+                child:  Text('Submit',style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.w500,
+                ),),
               )),
             ],
           ),
